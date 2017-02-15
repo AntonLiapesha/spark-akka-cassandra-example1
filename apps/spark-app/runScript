@@ -1,0 +1,17 @@
+sbt clean compile
+
+sbt "project spark-app" assembly:assembly
+
+docker-compose up -d
+
+cqlsh 192.168.99.100 9042 --cqlversion="3.4.4" -u cassandra -p password123 < cassandra-init.cql
+
+
+sh ~/libs/spark-2.1.0-bin-hadoop2.7/bin/spark-submit --class com.aliapesha.testtask.spark.Main \
+                                                        ./apps/spark-app/target/scala-2.11/testTask.jar \
+                                                        http://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data
+
+
+sbt akka-app/run
+
+curl http://localhost:9000/stat/sample

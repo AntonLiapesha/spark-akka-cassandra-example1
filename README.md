@@ -7,9 +7,7 @@ docker toolbox
 
 cqlsh
 
-docker toolbox
-
-local spark spark-2.1.0-bin-hadoop2.7
+local spark-2.1.0-bin-hadoop2.7
 
 Steps:
 
@@ -26,4 +24,5 @@ Steps:
 
 Next steps:
 1. Use dockerized spark
-2. Put spark and kafka into compose config
+2. Put spark and kafka into docker-compose config
+3. Add tests
